@@ -1,1 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jakaria TopUp</title>
 
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#080b12;
+  color:white;
+}
+
+header{
+  padding:18px 20px;
+  background:#0e1420;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:bold;
+}
+
+.logo span{
+  color:#00e5ff;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:12px;
+  font-size:14px;
+}
+
+.hero{
+  padding:55px 20px;
+  text-align:center;
+  background:linear-gradient(135deg,#101a30,#071014);
+}
+
+.hero h1{
+  font-size:38px;
+  margin-bottom:12px;
+}
+
+.hero h1 span{
+  color:#00e5ff;
+}
+
+.hero p{
+  color:#aab3c2;
+  margin-bottom:25px;
+}
+
+.btn{
+  display:inline-block;
+  padding:13px 22px;
+  background:#00c8ff;
+  color:#001018;
+  text-decoration:none;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+section{
+  padding:35px 18px;
+  max-width:1000px;
+  margin:auto;
+}
+
+.title{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.title h2{
+  font-size:28px;
+}
+
+.title p{
+  color:#8e99aa;
+  margin-top:7px;
+}
+
+.games{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:18px;
+}
+
+.game{
+  background:#111722;
+  border:1px solid #202b3b;
+  padding:22px;
+  border-radius:16px;
+  text-align:center;
+}
+
+.game h3{
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+.game p{
+  color:#9da8b8;
+  margin-bottom:18px;
+}
+
+.packages{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;
+}
+
+.package{
+  background:#111722;
+  border:1px solid #222e40;
+  padding:18px;
+  border-radius:12px;
+  text-align:center;
+}
+
+.package h3{
+  margin-bottom:8px;
+}
+
+.price{
+  color:#00e5ff;
+  font-size:19px;
+  font-weight:bold;
+  margin-bottom:12px;
+}
+
+.order{
+  background:#0e1420;
+  border-radius:18px;
+  padding:25px;
+}
+
+input,select{
+  width:100%;
+  padding:13px;
+  margin:8px 0;
+  background:#080b12;
+  color:white;
+  border:1px solid #2a3547;
+  border-radius:9px;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  margin-top:10px;
+  border:none;
+  border-radius:9px;
+  background:#00d9ff;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.payment{
+  margin-top:20px;
+  padding:18px;
+  background:#111722;
+  border-radius:12px;
+}
+
+.payment p{
+  margin:7px 0;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#7f8998;
+  border-top:1px solid #1b2432;
+  margin-top:30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Jakaria <span>TopUp</span></div>
+  <nav>
+    <a href="#games">Games</a>
+    <a href="#order">Order</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Fast <span>Game Top-Up</span></h1>
+  <p>Free Fire & eFootball Top-Up Service</p>
+  <a class="btn" href="#order">Order Now</a>
+</div>
+
+<section id="games">
+  <div class="title">
+    <h2>Choose Your Game</h2>
+    <p>Select a game and place your order</p>
+  </div>
+
+  <div class="games">
+
+    <div class="game">
+      <h3>🔥 Free Fire</h3>
+      <p>Diamonds Top-Up</p>
+      <a class="btn" href="#order">Top-Up Now</a>
+    </div>
+
+    <div class="game">
+      <h3>⚽ eFootball</h3>
+      <p>Coins / Points Top-Up</p>
+      <a class="btn" href="#order">Top-Up Now</a>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="title">
+    <h2>Popular Packages</h2>
+  </div>
+
+  <div class="packages">
+
+    <div class="package">
+      <h3>💎 FF Diamonds</h3>
+      <div class="price">৳ Price</div>
+      <a class="btn" href="#order">Order</a>
+    </div>
+
+    <div class="package">
+      <h3>💎 FF Diamonds</h3>
+      <div class="price">৳ Price</div>
+      <a class="btn" href="#order">Order</a>
+    </div>
+
+    <div class="package">
+      <h3>⚽ eFootball</h3>
+      <div class="price">৳ Price</div>
+      <a class="btn" href="#order">Order</a>
+    </div>
+
+    <div class="package">
+      <h3>⚽ eFootball</h3>
+      <div class="price">৳ Price</div>
+      <a class="btn" href="#order">Order</a>
+    </div>
+
+  </div>
+</section>
+
+<section id="order">
+  <div class="title">
+    <h2>Place Your Order</h2>
+    <p>Enter your game information</p>
+  </div>
+
+  <div class="order">
+
+    <select id="game">
+      <option>Free Fire</option>
+      <option>eFootball</option>
+    </select>
+
+    <input id="uid" type="text" placeholder="Enter Player ID / UID">
+
+    <input id="package" type="text" placeholder="Enter Package">
+
+    <input id="trx" type="text" placeholder="Payment Transaction ID">
+
+    <button onclick="sendOrder()">Submit Order</button>
+
+    <div class="payment">
+      <h3>💳 Payment</h3>
+      <p>bKash: YOUR NUMBER</p>
+      <p>Nagad: YOUR NUMBER</p>
+      <p>Payment করার পর Transaction ID দিন।</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 Jakaria TopUp — All Rights Reserved
+</footer>
+
+<script>
+function sendOrder(){
+
+  const game = document.getElementById("game").value;
+  const uid = document.getElementById("uid").value;
+  const pack = document.getElementById("package").value;
+  const trx = document.getElementById("trx").value;
+
+  if(!uid || !pack || !trx){
+    alert("Please fill in all information.");
+    return;
+  }
+
+  const message =
+  "New Top-Up Order%0A%0A" +
+  "Game: " + game + "%0A" +
+  "Player ID: " + uid + "%0A" +
+  "Package: " + pack + "%0A" +
+  "Transaction ID: " + trx;
+ 
+  window.open("https://wa.me/8801627342351?text=" + message,"_blank");
+}
+</script>
+
+</body>
+</html>
+
+
+  
