@@ -3,56 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jakaria TopUp</title>
+<title>TopUp Zone | Game Top Up</title>
 
 <style>
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial,sans-serif;
+  font-family:Arial, sans-serif;
 }
 
 body{
-  background:#080b12;
-  color:white;
+  background:#080b14;
+  color:#fff;
+  min-height:100vh;
 }
 
 header{
-  padding:18px 20px;
-  background:#0e1420;
+  padding:18px 7%;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  background:#0d1220;
+  border-bottom:1px solid #222a3d;
   position:sticky;
   top:0;
   z-index:10;
 }
 
 .logo{
-  font-size:22px;
-  font-weight:bold;
+  font-size:24px;
+  font-weight:800;
 }
 
 .logo span{
   color:#00e5ff;
 }
 
-nav a{
-  color:white;
-  text-decoration:none;
-  margin-left:12px;
-  font-size:14px;
+.badge{
+  background:#102a2e;
+  color:#00e5ff;
+  padding:8px 12px;
+  border-radius:20px;
+  font-size:12px;
 }
 
 .hero{
-  padding:55px 20px;
   text-align:center;
-  background:linear-gradient(135deg,#101a30,#071014);
+  padding:55px 20px 35px;
 }
 
 .hero h1{
-  font-size:38px;
+  font-size:40px;
   margin-bottom:12px;
 }
 
@@ -61,133 +63,128 @@ nav a{
 }
 
 .hero p{
-  color:#aab3c2;
-  margin-bottom:25px;
-}
-
-.btn{
-  display:inline-block;
-  padding:13px 22px;
-  background:#00c8ff;
-  color:#001018;
-  text-decoration:none;
-  border-radius:10px;
-  font-weight:bold;
-}
-
-section{
-  padding:35px 18px;
-  max-width:1000px;
+  color:#9ba5ba;
+  max-width:600px;
   margin:auto;
+  line-height:1.6;
 }
 
-.title{
-  text-align:center;
-  margin-bottom:25px;
-}
-
-.title h2{
-  font-size:28px;
-}
-
-.title p{
-  color:#8e99aa;
-  margin-top:7px;
+.container{
+  width:92%;
+  max-width:900px;
+  margin:auto;
 }
 
 .games{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(2,1fr);
   gap:18px;
+  margin:25px 0;
 }
 
 .game{
-  background:#111722;
-  border:1px solid #202b3b;
+  background:#111827;
+  border:1px solid #263149;
   padding:22px;
-  border-radius:16px;
-  text-align:center;
+  border-radius:18px;
+  cursor:pointer;
+  transition:.25s;
 }
 
-.game h3{
-  font-size:22px;
-  margin-bottom:10px;
+.game:hover{
+  transform:translateY(-4px);
+  border-color:#00e5ff;
 }
 
-.game p{
-  color:#9da8b8;
-  margin-bottom:18px;
-}
-
-.packages{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:12px;
-}
-
-.package{
-  background:#111722;
-  border:1px solid #222e40;
-  padding:18px;
-  border-radius:12px;
-  text-align:center;
-}
-
-.package h3{
+.game h2{
   margin-bottom:8px;
 }
 
-.price{
-  color:#00e5ff;
-  font-size:19px;
-  font-weight:bold;
-  margin-bottom:12px;
+.game p{
+  color:#8e99ad;
+  font-size:14px;
 }
 
-.order{
-  background:#0e1420;
-  border-radius:18px;
+.form-box{
+  background:#0f1524;
+  border:1px solid #263149;
   padding:25px;
+  border-radius:20px;
+  margin:25px 0 50px;
+}
+
+.form-box h2{
+  margin-bottom:20px;
+}
+
+label{
+  display:block;
+  margin:14px 0 7px;
+  color:#cbd5e1;
+  font-size:14px;
 }
 
 input,select{
   width:100%;
-  padding:13px;
-  margin:8px 0;
-  background:#080b12;
-  color:white;
-  border:1px solid #2a3547;
-  border-radius:9px;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #303b54;
+  background:#080d18;
+  color:#fff;
+  outline:none;
+}
+
+input:focus,select:focus{
+  border-color:#00e5ff;
 }
 
 button{
   width:100%;
-  padding:14px;
-  margin-top:10px;
+  padding:15px;
+  margin-top:20px;
   border:none;
-  border-radius:9px;
-  background:#00d9ff;
-  font-weight:bold;
+  border-radius:12px;
+  background:#00e5ff;
+  color:#001014;
+  font-weight:800;
+  font-size:16px;
   cursor:pointer;
 }
 
-.payment{
-  margin-top:20px;
-  padding:18px;
-  background:#111722;
-  border-radius:12px;
+button:hover{
+  opacity:.88;
 }
 
-.payment p{
-  margin:7px 0;
+.info{
+  margin-top:15px;
+  padding:13px;
+  background:#111c2d;
+  border-radius:10px;
+  color:#9eabc0;
+  font-size:13px;
+  line-height:1.6;
 }
 
 footer{
   text-align:center;
   padding:25px;
-  color:#7f8998;
-  border-top:1px solid #1b2432;
-  margin-top:30px;
+  color:#657086;
+  border-top:1px solid #20283a;
+  font-size:13px;
+}
+
+@media(max-width:600px){
+  .hero h1{
+    font-size:31px;
+  }
+
+  .games{
+    grid-template-columns:1fr;
+  }
+
+  header{
+    padding:16px 5%;
+  }
 }
 </style>
 </head>
@@ -195,137 +192,464 @@ footer{
 <body>
 
 <header>
-  <div class="logo">Jakaria <span>TopUp</span></div>
-  <nav>
-    <a href="#games">Games</a>
-    <a href="#order">Order</a>
-  </nav>
+  <div class="logo">TopUp<span>Zone</span></div>
+  <div class="badge">● Online</div>
 </header>
 
-<div class="hero">
-  <h1>Fast <span>Game Top-Up</span></h1>
-  <p>Free Fire & eFootball Top-Up Service</p>
-  <a class="btn" href="#order">Order Now</a>
-</div>
+<section class="hero">
+  <h1>Fast & Easy <span>Game Top Up</span></h1>
+  <p>
+    Free Fire এবং eFootball top-up করুন সহজে।
+    আপনার order details WhatsApp-এ পাঠিয়ে confirmation নিন।
+  </p>
+</section>
 
-<section id="games">
-  <div class="title">
-    <h2>Choose Your Game</h2>
-    <p>Select a game and place your order</p>
-  </div>
+<div class="container">
 
   <div class="games">
 
-    <div class="game">
-      <h3>🔥 Free Fire</h3>
-      <p>Diamonds Top-Up</p>
-      <a class="btn" href="#order">Top-Up Now</a>
+    <div class="game" onclick="selectGame('Free Fire')">
+      <h2>🔥 Free Fire</h2>
+      <p>Diamonds Top Up</p>
     </div>
 
-    <div class="game">
-      <h3>⚽ eFootball</h3>
-      <p>Coins / Points Top-Up</p>
-      <a class="btn" href="#order">Top-Up Now</a>
-    </div>
-
-  </div>
-</section>
-
-<section>
-  <div class="title">
-    <h2>Popular Packages</h2>
-  </div>
-
-  <div class="packages">
-
-    <div class="package">
-      <h3>💎 FF Diamonds</h3>
-      <div class="price">৳ Price</div>
-      <a class="btn" href="#order">Order</a>
-    </div>
-
-    <div class="package">
-      <h3>💎 FF Diamonds</h3>
-      <div class="price">৳ Price</div>
-      <a class="btn" href="#order">Order</a>
-    </div>
-
-    <div class="package">
-      <h3>⚽ eFootball</h3>
-      <div class="price">৳ Price</div>
-      <a class="btn" href="#order">Order</a>
-    </div>
-
-    <div class="package">
-      <h3>⚽ eFootball</h3>
-      <div class="price">৳ Price</div>
-      <a class="btn" href="#order">Order</a>
+    <div class="game" onclick="selectGame('eFootball')">
+      <h2>⚽ eFootball</h2>
+      <p>Coins / Points Top Up</p>
     </div>
 
   </div>
-</section>
 
-<section id="order">
-  <div class="title">
-    <h2>Place Your Order</h2>
-    <p>Enter your game information</p>
-  </div>
+  <div class="form-box">
 
-  <div class="order">
+    <h2>🛒 Place Your Order</h2>
 
+    <label>Game</label>
     <select id="game">
-      <option>Free Fire</option>
-      <option>eFootball</option>
+      <option value="Free Fire">Free Fire</option>
+      <option value="eFootball">eFootball</option>
     </select>
 
-    <input id="uid" type="text" placeholder="Enter Player ID / UID">
+    <label>Player ID</label>
+    <input id="playerId" type="text" placeholder="Enter your Player ID">
 
-    <input id="package" type="text" placeholder="Enter Package">
+    <label>Package</label>
+    <select id="package">
+      <option value="Select Package">Select Package</option>
+      <option value="Small Package">Small Package</option>
+      <option value="Medium Package">Medium Package</option>
+      <option value="Large Package">Large Package</option>
+      <option value="Custom Package">Custom Package</option>
+    </select>
 
-    <input id="trx" type="text" placeholder="Payment Transaction ID">
+    <label>Your Name</label>
+    <input id="name" type="text" placeholder="Enter your name">
 
-    <button onclick="sendOrder()">Submit Order</button>
+    <label>Payment Method</label>
+    <select id="payment">
+      <option value="bKash">bKash</option>
+      <option value="Nagad">Nagad</option>
+      <option value="Rocket">Rocket</option>
+    </select>
 
-    <div class="payment">
-      <h3>💳 Payment</h3>
-      <p>bKash: YOUR NUMBER</p>
-      <p>Nagad: YOUR NUMBER</p>
-      <p>Payment করার পর Transaction ID দিন।</p>
+    <label>Transaction ID</label>
+    <input id="trx" type="text" placeholder="Enter Transaction ID">
+
+    <div class="info">
+      ℹ️ Order submit করার পর WhatsApp খুলবে।
+      সেখানে আপনার order details পাঠিয়ে confirmation নিতে পারবেন।
     </div>
 
+    <button onclick="sendOrder()">
+      📲 Order via WhatsApp
+    </button>
+
   </div>
-</section>
+
+</div>
 
 <footer>
-  © 2026 Jakaria TopUp — All Rights Reserved
+  © 2026 TopUpZone — All Rights Reserved
 </footer>
 
 <script>
+
+const whatsapp = "8801627342351";
+
+function selectGame(gameName){
+  document.getElementById("game").value = gameName;
+
+  document.querySelector(".form-box").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
 function sendOrder(){
 
   const game = document.getElementById("game").value;
-  const uid = document.getElementById("uid").value;
-  const pack = document.getElementById("package").value;
-  const trx = document.getElementById("trx").value;
+  const playerId = document.getElementById("playerId").value.trim();
+  const pkg = document.getElementById("package").value;
+  const name = document.getElementById("name").value.trim();
+  const payment = document.getElementById("payment").value;
+  const trx = document.getElementById("trx").value.trim();
 
-  if(!uid || !pack || !trx){
-    alert("Please fill in all information.");
+  if(!playerId || !name || pkg === "Select Package" || !trx){
+
+    alert("Please fill in all required information.");
+
     return;
   }
 
   const message =
-  "New Top-Up Order%0A%0A" +
-  "Game: " + game + "%0A" +
-  "Player ID: " + uid + "%0A" +
-  "Package: " + pack + "%0A" +
-  "Transaction ID: " + trx;
- 
-  window.open("https://wa.me/8801627342351?text=" + message,"_blank");
+`🎮 NEW TOP UP ORDER
+
+Game: ${game}
+Player ID: ${playerId}
+Package: ${pkg}
+
+Customer Name: ${name}
+Payment Method: ${payment}
+Transaction ID: ${trx}
+
+Please check my order.`;
+
+  const url =
+    "https://wa.me/" +
+    whatsapp +
+    "?text=" +
+    encodeURIComponent(message);
+
+  window.open(url, "_blank");
 }
+
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TopUp Zone | Game Top Up</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  background:#080b14;
+  color:#fff;
+  min-height:100vh;
+}
+
+header{
+  padding:18px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#0d1220;
+  border-bottom:1px solid #222a3d;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:800;
+}
+
+.logo span{
+  color:#00e5ff;
+}
+
+.badge{
+  background:#102a2e;
+  color:#00e5ff;
+  padding:8px 12px;
+  border-radius:20px;
+  font-size:12px;
+}
+
+.hero{
+  text-align:center;
+  padding:55px 20px 35px;
+}
+
+.hero h1{
+  font-size:40px;
+  margin-bottom:12px;
+}
+
+.hero h1 span{
+  color:#00e5ff;
+}
+
+.hero p{
+  color:#9ba5ba;
+  max-width:600px;
+  margin:auto;
+  line-height:1.6;
+}
+
+.container{
+  width:92%;
+  max-width:900px;
+  margin:auto;
+}
+
+.games{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+  margin:25px 0;
+}
+
+.game{
+  background:#111827;
+  border:1px solid #263149;
+  padding:22px;
+  border-radius:18px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.game:hover{
+  transform:translateY(-4px);
+  border-color:#00e5ff;
+}
+
+.game h2{
+  margin-bottom:8px;
+}
+
+.game p{
+  color:#8e99ad;
+  font-size:14px;
+}
+
+.form-box{
+  background:#0f1524;
+  border:1px solid #263149;
+  padding:25px;
+  border-radius:20px;
+  margin:25px 0 50px;
+}
+
+.form-box h2{
+  margin-bottom:20px;
+}
+
+label{
+  display:block;
+  margin:14px 0 7px;
+  color:#cbd5e1;
+  font-size:14px;
+}
+
+input,select{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #303b54;
+  background:#080d18;
+  color:#fff;
+  outline:none;
+}
+
+input:focus,select:focus{
+  border-color:#00e5ff;
+}
+
+button{
+  width:100%;
+  padding:15px;
+  margin-top:20px;
+  border:none;
+  border-radius:12px;
+  background:#00e5ff;
+  color:#001014;
+  font-weight:800;
+  font-size:16px;
+  cursor:pointer;
+}
+
+button:hover{
+  opacity:.88;
+}
+
+.info{
+  margin-top:15px;
+  padding:13px;
+  background:#111c2d;
+  border-radius:10px;
+  color:#9eabc0;
+  font-size:13px;
+  line-height:1.6;
+}
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#657086;
+  border-top:1px solid #20283a;
+  font-size:13px;
+}
+
+@media(max-width:600px){
+  .hero h1{
+    font-size:31px;
+  }
+
+  .games{
+    grid-template-columns:1fr;
+  }
+
+  header{
+    padding:16px 5%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">TopUp<span>Zone</span></div>
+  <div class="badge">● Online</div>
+</header>
+
+<section class="hero">
+  <h1>Fast & Easy <span>Game Top Up</span></h1>
+  <p>
+    Free Fire এবং eFootball top-up করুন সহজে।
+    আপনার order details WhatsApp-এ পাঠিয়ে confirmation নিন।
+  </p>
+</section>
+
+<div class="container">
+
+  <div class="games">
+
+    <div class="game" onclick="selectGame('Free Fire')">
+      <h2>🔥 Free Fire</h2>
+      <p>Diamonds Top Up</p>
+    </div>
+
+    <div class="game" onclick="selectGame('eFootball')">
+      <h2>⚽ eFootball</h2>
+      <p>Coins / Points Top Up</p>
+    </div>
+
+  </div>
+
+  <div class="form-box">
+
+    <h2>🛒 Place Your Order</h2>
+
+    <label>Game</label>
+    <select id="game">
+      <option value="Free Fire">Free Fire</option>
+      <option value="eFootball">eFootball</option>
+    </select>
+
+    <label>Player ID</label>
+    <input id="playerId" type="text" placeholder="Enter your Player ID">
+
+    <label>Package</label>
+    <select id="package">
+      <option value="Select Package">Select Package</option>
+      <option value="Small Package">Small Package</option>
+      <option value="Medium Package">Medium Package</option>
+      <option value="Large Package">Large Package</option>
+      <option value="Custom Package">Custom Package</option>
+    </select>
+
+    <label>Your Name</label>
+    <input id="name" type="text" placeholder="Enter your name">
+
+    <label>Payment Method</label>
+    <select id="payment">
+      <option value="bKash">bKash</option>
+      <option value="Nagad">Nagad</option>
+      <option value="Rocket">Rocket</option>
+    </select>
+
+    <label>Transaction ID</label>
+    <input id="trx" type="text" placeholder="Enter Transaction ID">
+
+    <div class="info">
+      ℹ️ Order submit করার পর WhatsApp খুলবে।
+      সেখানে আপনার order details পাঠিয়ে confirmation নিতে পারবেন।
+    </div>
+
+    <button onclick="sendOrder()">
+      📲 Order via WhatsApp
+    </button>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 TopUpZone — All Rights Reserved
+</footer>
+
+<script>
+
+const whatsapp = "8801627342351";
+
+function selectGame(gameName){
+  document.getElementById("game").value = gameName;
+
+  document.querySelector(".form-box").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+function sendOrder(){
+
+  const game = document.getElementById("game").value;
+  const playerId = document.getElementById("playerId").value.trim();
+  const pkg = document.getElementById("package").value;
+  const name = document.getElementById("name").value.trim();
+  const payment = document.getElementById("payment").value;
+  const trx = document.getElementById("trx").value.trim();
+
+  if(!playerId || !name || pkg === "Select Package" || !trx){
+
+    alert("Please fill in all required information.");
+
+    return;
+  }
+
+  const message =
+`🎮 NEW TOP UP ORDER
+
+Game: ${game}
+Player ID: ${playerId}
+Package: ${pkg}
+
+Customer Name: ${name}
+Payment Method: ${payment}
+Transaction ID: ${trx}
+
+Please check my order.`;
+
+  const url =
+    "https://wa.me/" +
+    whatsapp +
+    "?text=" +
+    encodeURIComponent(message);
+
+  window.open(url, "_blank");
+}
+
 </script>
 
 </body>
 </html>
-
-
-  
