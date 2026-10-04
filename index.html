@@ -43,6 +43,10 @@ button.main:hover{opacity:.88}
 .bar small{color:#9ba5ba;font-size:13px}
 .bar div b{display:block;font-size:26px}
 .bar button{width:auto;margin:0;padding:15px 30px;border:none;border-radius:12px;background:#00e5ff;color:#001014;font-weight:800;font-size:16px;cursor:pointer}
+.pay{margin:18px 0 4px;padding:14px;background:#2a0f1c;border:1px solid #e2136e;border-radius:12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.pay small{display:block;color:#f2a0c4;font-size:13px;margin-bottom:4px}
+.pay b{font-size:20px;letter-spacing:1px}
+.pay button{padding:10px 16px;border:none;border-radius:10px;background:#e2136e;color:#fff;font-weight:700;cursor:pointer}
 .hide{display:none}
 footer{text-align:center;padding:25px;color:#657086;border-top:1px solid #20283a;font-size:13px}
 @media(max-width:600px){.hero h1{font-size:31px}.games{grid-template-columns:1fr}header{padding:16px 5%}}
@@ -96,6 +100,11 @@ footer{text-align:center;padding:25px;color:#657086;border-top:1px solid #20283a
     <label>Your Name</label>
     <input id="efName" type="text" placeholder="Enter your name">
 
+    <div class="pay">
+      <div><small>bKash নাম্বারে Send Money করুন</small><b>01627342351</b></div>
+      <button onclick="copyNum()">Copy</button>
+    </div>
+
     <label>Payment Method</label>
     <select id="efPay">
       <option value="bKash">bKash</option>
@@ -129,6 +138,11 @@ footer{text-align:center;padding:25px;color:#657086;border-top:1px solid #20283a
 
     <label>Your Name</label>
     <input id="name" type="text" placeholder="Enter your name">
+
+    <div class="pay">
+      <div><small>bKash নাম্বারে Send Money করুন</small><b>01627342351</b></div>
+      <button onclick="copyNum()">Copy</button>
+    </div>
 
     <label>Payment Method</label>
     <select id="payment">
@@ -202,6 +216,15 @@ function selectGame(g){
   document.getElementById("cardEF").classList.toggle("active",ef);
   document.getElementById("cardFF").classList.toggle("active",!ef);
   document.querySelector(ef ? "#efBox" : "#ffBox").scrollIntoView({behavior:"smooth"});
+}
+
+function copyNum(){
+  const n = "01627342351";
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(n).then(()=>alert("নাম্বার কপি হয়েছে: "+n));
+  }else{
+    prompt("নাম্বার কপি করুন:", n);
+  }
 }
 
 function openWA(message){
