@@ -48,6 +48,14 @@ button.main:hover{opacity:.88}
 .pay b{font-size:20px;letter-spacing:1px}
 .pay button{padding:10px 16px;border:none;border-radius:10px;background:#e2136e;color:#fff;font-weight:700;cursor:pointer}
 .hide{display:none}
+/* Free Fire option cards */
+.ffgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.opt{background:#151b2e;border:2px solid transparent;border-radius:14px;padding:8px;text-align:center;cursor:pointer;transition:.2s}
+.opt:hover{border-color:#00e5ff}
+.opt-img{aspect-ratio:1/1;border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#1a0a00,#c4410a);font-weight:800;font-size:14px;line-height:1.15;padding:6px}
+.opt-img img{width:100%;height:100%;object-fit:cover;display:block}
+.opt span{display:block;margin-top:8px;font-size:12px;font-weight:700;min-height:2.4em}
+.back{background:none;border:none;color:#00e5ff;cursor:pointer;font-size:14px;font-weight:700;margin-bottom:14px;padding:0}
 footer{text-align:center;padding:25px;color:#657086;border-top:1px solid #20283a;font-size:13px}
 @media(max-width:600px){.hero h1{font-size:31px}.games{grid-template-columns:1fr}header{padding:16px 5%}}
 </style>
@@ -122,43 +130,60 @@ footer{text-align:center;padding:25px;color:#657086;border-top:1px solid #20283a
 
   <!-- ================= Free Fire ================= -->
   <div class="form-box hide" id="ffBox">
-    <h2>🔥 Free Fire Order</h2>
+    <h2>🔥 Free Fire TopUp</h2>
 
-    <label>Player ID</label>
-    <input id="playerId" type="text" placeholder="Enter your Player ID">
+    <!-- Step 1: option cards -->
+    <div class="ffgrid" id="ffOptions"></div>
 
-    <label>Package</label>
-    <select id="package">
-      <option value="Select Package">Select Package</option>
-      <option value="Small Package">Small Package</option>
-      <option value="Medium Package">Medium Package</option>
-      <option value="Large Package">Large Package</option>
-      <option value="Custom Package">Custom Package</option>
-    </select>
+    <!-- Step 2: selected option -->
+    <div class="hide" id="ffDetail">
+      <button class="back" onclick="backFF()">← সব অপশন</button>
 
-    <label>Your Name</label>
-    <input id="name" type="text" placeholder="Enter your name">
+      <!-- Free Fire Diamond Topup (আগের ফর্ম) -->
+      <div class="hide" id="ffDiamond">
+        <label>Player ID</label>
+        <input id="playerId" type="text" placeholder="Enter your Player ID">
 
-    <div class="pay">
-      <div><small>bKash নাম্বারে Send Money করুন</small><b>01627342351</b></div>
-      <button onclick="copyNum()">Copy</button>
+        <label>Package</label>
+        <select id="package">
+          <option value="Select Package">Select Package</option>
+          <option value="Small Package">Small Package</option>
+          <option value="Medium Package">Medium Package</option>
+          <option value="Large Package">Large Package</option>
+          <option value="Custom Package">Custom Package</option>
+        </select>
+
+        <label>Your Name</label>
+        <input id="name" type="text" placeholder="Enter your name">
+
+        <div class="pay">
+          <div><small>bKash নাম্বারে Send Money করুন</small><b>01627342351</b></div>
+          <button onclick="copyNum()">Copy</button>
+        </div>
+
+        <label>Payment Method</label>
+        <select id="payment">
+          <option value="bKash">bKash</option>
+          <option value="Nagad">Nagad</option>
+          <option value="Rocket">Rocket</option>
+        </select>
+
+        <label>Transaction ID</label>
+        <input id="trx" type="text" placeholder="Enter Transaction ID">
+
+        <div class="info">
+          ℹ️ Order submit করার পর WhatsApp খুলবে। সেখানে আপনার order details পাঠিয়ে confirmation নিতে পারবেন।
+        </div>
+
+        <button class="main" onclick="sendFF()">📲 Order via WhatsApp</button>
+      </div>
+
+      <!-- বাকি অপশনগুলো (কন্টেন্ট পরে বসবে) -->
+      <div class="hide" id="ffOther">
+        <div class="sec" id="ffOtherTitle" style="margin-top:0"></div>
+        <div class="info">এই অপশনের প্যাকেজ শীঘ্রই যোগ হবে।</div>
+      </div>
     </div>
-
-    <label>Payment Method</label>
-    <select id="payment">
-      <option value="bKash">bKash</option>
-      <option value="Nagad">Nagad</option>
-      <option value="Rocket">Rocket</option>
-    </select>
-
-    <label>Transaction ID</label>
-    <input id="trx" type="text" placeholder="Enter Transaction ID">
-
-    <div class="info">
-      ℹ️ Order submit করার পর WhatsApp খুলবে। সেখানে আপনার order details পাঠিয়ে confirmation নিতে পারবেন।
-    </div>
-
-    <button class="main" onclick="sendFF()">📲 Order via WhatsApp</button>
   </div>
 
 </div>
@@ -191,6 +216,15 @@ const packs = [
 ];
 let sel = 0, device = "Android";
 
+/* Free Fire অপশন — নাম/ছবি এখানে edit করুন। ছবি দিতে img এ লিংক বসান।
+   ৫ম অপশন লাগলে আরেকটা লাইন যোগ করুন। */
+const ffOpts = [
+  {id:"diamond", name:"Free Fire Diamond Topup", label:"DIAMOND<br>TOPUP", img:""},
+  {id:"wm", name:"Weekly & Monthly", label:"WEEKLY<br>MONTHLY", img:""},
+  {id:"lite", name:"Weekly Lite", label:"WEEKLY<br>LITE", img:""},
+  {id:"levelup", name:"Level Up Pass", label:"LEVEL UP<br>PACKAGES", img:""}
+];
+
 const fmt = n => "৳ " + n.toLocaleString("en-US",{minimumFractionDigits:2});
 
 function renderPacks(){
@@ -208,6 +242,28 @@ function setDevice(el,d){
   el.classList.add("on");
 }
 
+/* ===== Free Fire options ===== */
+function renderFFOptions(){
+  document.getElementById("ffOptions").innerHTML = ffOpts.map(o=>
+    `<div class="opt" onclick="openFF('${o.id}')">
+       <div class="opt-img">${o.img?`<img src="${o.img}" alt="${o.name}">`:o.label}</div>
+       <span>${o.name}</span>
+     </div>`).join("");
+}
+function openFF(id){
+  const o = ffOpts.find(x=>x.id===id);
+  document.getElementById("ffOptions").classList.add("hide");
+  document.getElementById("ffDetail").classList.remove("hide");
+  const diamond = id === "diamond";
+  document.getElementById("ffDiamond").classList.toggle("hide",!diamond);
+  document.getElementById("ffOther").classList.toggle("hide",diamond);
+  document.getElementById("ffOtherTitle").textContent = o.name;
+}
+function backFF(){
+  document.getElementById("ffDetail").classList.add("hide");
+  document.getElementById("ffOptions").classList.remove("hide");
+}
+
 function selectGame(g){
   const ef = g === "eFootball";
   document.getElementById("efBox").classList.toggle("hide",!ef);
@@ -215,6 +271,7 @@ function selectGame(g){
   document.getElementById("ffBox").classList.toggle("hide",ef);
   document.getElementById("cardEF").classList.toggle("active",ef);
   document.getElementById("cardFF").classList.toggle("active",!ef);
+  if(!ef) backFF();
   document.querySelector(ef ? "#efBox" : "#ffBox").scrollIntoView({behavior:"smooth"});
 }
 
@@ -274,7 +331,7 @@ function sendFF(){
   openWA(
 `🎮 NEW TOP UP ORDER
 
-Game: Free Fire
+Game: Free Fire (Diamond Topup)
 Player ID: ${playerId}
 Package: ${pkg}
 
@@ -286,6 +343,7 @@ Please check my order.`);
 }
 
 renderPacks();
+renderFFOptions();
 </script>
 </body>
 </html>
